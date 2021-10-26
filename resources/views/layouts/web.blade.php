@@ -52,7 +52,7 @@
 
         <footer class="border-t border-gray-800">
             <div class="container mx-auto px-4 py-6">
-                2021 SAMMY DETALLES Y MAS
+                 {{ sprintf("%s %s", now()->format('Y'), strtoupper(session('company_name'))) }}
             </div>
         </footer>
 
