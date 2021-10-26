@@ -18,7 +18,7 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
 
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
         <livewire:styles />
     </head>
@@ -37,9 +37,9 @@
                 <div class="flex items-center mt-6 lg:mt-0">
                     <livewire:search-dropdown/>
 
-                    <div class="ml-6">
-                        <a href="#"><img src="/avatar2.png" alt="avatar"  class="rounded-full w-12"></a>
-                    </div>
+{{--                    <div class="ml-6">--}}
+{{--                        <a href="#"><img src="/avatar2.png" alt="avatar"  class="rounded-full w-12"></a>--}}
+{{--                    </div>--}}
 
                 </div>
             </nav>
