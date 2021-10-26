@@ -24,6 +24,7 @@ class LinkGuestRequestToCompany
         abort_if(! $domain, 403);
 
         session(['company_id' => $domain->company_id]);
+        session(['company_name' => $domain->company->name]);
         session(['theme' => $domain->company->theme]);
         return $next($request);
     }
