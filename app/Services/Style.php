@@ -9,7 +9,7 @@ class Style
             'background' => 'bg-gray-100',
             'button-background-color' =>  'bg-blue-500',
             'button-background-hover-color' => 'bg-blue-600',
-            'modal-background-color' => 'bg-gray-700',
+            'modal-background-color' => 'bg-gray-600',
             'primary-text' => 'text-gray-900',
             'category-title-color' => 'text-blue-500',
             'search-bar-background-color' => 'bg-white-200',
