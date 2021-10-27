@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\BelongsToCompany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
@@ -37,7 +38,7 @@ class Product extends Model
             return Storage::disk('s3')->url('product-image-placeholder.gif');
         }
 
-        return Storage::disk('s3')->url('1/' . $route);
+        return Storage::disk('s3')->url($route);
     }
 
     public function getFormattedPriceAttribute(): string
