@@ -20,13 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ShopController::class, 'index'])->middleware('link.domain.company');
 Route::get('/products/{products:slug}', [ShopController::class, 'details'])->middleware('link.domain.company')->name('product-details');;
-Route::resource('products', ShopController::class)->middleware('link.domain.company');
+Route::resource('products', ShopController::class)->middleware('link.domain.company')
+;
+Route::get('/manage', [ShopAdminController::class, 'index'])->middleware(['auth'])->name('manage');
 
-
-
-Route::get('/web', function () {
-    return view('web');
-});
 
 Route::get('/email', function () {
     Notification::route('mail', 'rocoutp@gmail.com')
@@ -38,7 +35,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/manage', [ShopAdminController::class, 'index'])->middleware(['auth'])->name('manage');
 //Route::get('/manage', function () {
 //    return view('dashboard');
 //})->middleware(['auth'])->name('manage');
