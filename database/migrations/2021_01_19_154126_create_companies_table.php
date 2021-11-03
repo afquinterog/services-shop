@@ -19,6 +19,8 @@ class CreateCompaniesTable extends Migration
             $table->string('name', 100);
             $table->string('description')->nullable();
             $table->string('theme', 30);
+            $table->string('meta_description', 200);
+            $table->string('gtag', 30);
 
             $table->foreignId('user_id')->nullable();
             $table->timestamps();
