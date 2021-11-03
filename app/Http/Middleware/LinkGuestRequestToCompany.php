@@ -25,6 +25,7 @@ class LinkGuestRequestToCompany
 
         session(['company_id' => $domain->company_id]);
         session(['company_name' => $domain->company->name]);
+        session(['company' => $domain->company]);
         session(['theme' => $domain->company->theme]);
         return $next($request);
     }

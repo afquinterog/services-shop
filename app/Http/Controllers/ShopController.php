@@ -40,7 +40,8 @@ class ShopController extends Controller
         return view('web', [
             'company_id' => $company->id,
             'categories' => $categories,
-            'pageTitle' => $company->name
+            'pageTitle' => $company->name,
+            'metaDescription' => $company->meta_description,
         ]);
     }
 
@@ -75,7 +76,7 @@ class ShopController extends Controller
 
         $pageTitle = $company->name . " " . $product->name ;
 
-        return view('product-detail', compact('product', 'images', 'pageTitle'));
+        return view('product-detail', compact('product', 'pageTitle'));
     }
 
     /**
