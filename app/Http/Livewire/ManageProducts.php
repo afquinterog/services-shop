@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Helpers\UI\Utils;
+use App\Http\Livewire\Traits\InteractsWithUI;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
@@ -13,7 +14,9 @@ use Livewire\Component;
 
 class ManageProducts extends Component
 {
-    use WithFileUploads;
+
+
+    use WithFileUploads, InteractsWithUI;
 
     public $products;
 
@@ -72,6 +75,7 @@ class ManageProducts extends Component
 
         $this->products = Product::all();
         $this->showEditProductForm(false);
+        $this->notification(__('Producto Guardado'),  __('Los datos del producto se guardaron correctamente') );
     }
 
     public function saveProductPhoto()

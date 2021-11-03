@@ -72,6 +72,7 @@
         </footer>
 
         <livewire:scripts />
+        @include('components.messages')
     </body>
 </html>
 
