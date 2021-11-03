@@ -1,3 +1,33 @@
 {
-    "New Order on your shop": "Nuevo pedido en tu tienda"
+    "Logout": "Cerrar sesión",
+
+    "Categories": "Categorías",
+    "Configuration": "Configuración",
+    "Products": "Productos",
+
+    "New Order on your shop": "Nuevo pedido en tu tienda",
+    "Products Management":"Gestión de Productos",
+    "New Product" : "Nuevo producto",
+    "Name":  "Nombre",
+    "Description":  "Descripción",
+    "Price": "Precio",
+    "Category": "Categoría",
+    "Slut": "Slug",
+    "Edit": "Editar",
+    "Edit Product": "Editar Producto",
+    "Product Information": "Información del Producto",
+    "Please write a product description": "Escribe una descripción del producto.",
+    "Publish": "Publicar",
+    "Yes": "Si",
+    "No": "No",
+    "Order": "Orden",
+    "Order should be a number and indicate the product position in the category": "Orden debe ser un número el cual indica la posición del producto en la categoría",
+    "Cancel": "Cancelar",
+    "Save": "Guardar",
+    "Product Images": "Imágenes del producto",
+    "Add images to your product, first one will be used as the main product image.": "Agregue imagenes para su producto, la primera imagen será usada como portada del producto.",
+    "Choose a product image": "Seleccione imagen del producto",
+    "Upload Image": "Guardar Imagen"
+
+
 }

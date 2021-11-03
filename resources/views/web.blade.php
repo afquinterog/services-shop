@@ -4,6 +4,7 @@
 
 {{--    @include('partials.marketing.header')--}}
     @section('title', $pageTitle)
+    @section('metaDescription', $metaDescription)
 
     @section('content')
         <div class="container mx-auto px-4">

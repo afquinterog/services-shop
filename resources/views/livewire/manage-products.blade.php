@@ -3,13 +3,13 @@
     <div class="flex flex-row justify-between">
         <div>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Products') }}
+                {{ __('Products Management') }}
             </h2>
         </div>
         <div x-data>
             <button @click="$dispatch('new-product', {  })"  type="button"
                     class="py-2 px-4 border bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm text-sm font-medium text-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Nuevo producto
+                {{ __('New Product') }}
             </button>
         </div>
     </div>
@@ -31,20 +31,20 @@
                                         <thead class="bg-gray-50">
                                         <tr>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Nombre
+                                                {{ __('Name') }}
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Precio
+                                                {{ __('Price') }}
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Categoría
+                                                {{ __('Category') }}
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Slug
+                                                {{ __('Slug') }}
                                             </th>
 
                                             <th scope="col" class="relative px-6 py-3">
-                                                <span class="sr-only">Editar</span>
+                                                <span class="sr-only">{{ __('Edit') }}</span>
                                             </th>
                                         </tr>
                                         </thead>
@@ -91,17 +91,17 @@
                                                 <div>
                                                     <div>
                                                         <h3 class="text-lg leading-6 font-medium text-gray-900">
-                                                            Editar producto
+                                                            {{ __('Edit Product')}}
                                                         </h3>
                                                         <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                                                            Información del producto
+                                                            {{ __('Product Information')}}
                                                         </p>
                                                     </div>
 
                                                     <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
                                                         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                                             <label for="name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                                                                Nombre
+                                                                {{ __('Name')}}
                                                             </label>
                                                             <div class="mt-1 sm:mt-0 sm:col-span-2">
                                                                 <input wire:model="product.name" type="text" name="name" id="name" autocomplete="given-name" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
@@ -110,19 +110,19 @@
 
                                                         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                                             <label for="description" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                                                                Descripción
+                                                                {{ __('Description')}}
                                                             </label>
                                                             <div class="mt-1 sm:mt-0 sm:col-span-2">
                                                                 <textarea wire:model="product.description" id="description" name="description" rows="10" class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"></textarea>
                                                                 <p class="mt-2 text-sm text-gray-500">
-                                                                    Escribe una descripción del producto.
+                                                                    {{ __('Please write a product description')}}
                                                                 </p>
                                                             </div>
                                                         </div>
 
                                                         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                                             <label for="price" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                                                                Precio
+                                                                {{ __('Price')}}
                                                             </label>
                                                             <div class="mt-1 sm:mt-0 sm:col-span-2">
                                                                 <input wire:model="product.price" type="text" name="price" id="price" autocomplete="given-name" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
@@ -131,7 +131,7 @@
 
                                                         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                                             <label for="username" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                                                                Categoría
+                                                                {{ __('Category')}}
                                                             </label>
                                                             <div class="mt-1 sm:mt-0 sm:col-span-2">
                                                                 <select wire:model="categoryId" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
@@ -145,24 +145,28 @@
 
                                                         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                                             <label for="active" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                                                                Publicar
+                                                                {{ __('Publish')}}
                                                             </label>
                                                             <div class="mt-1 sm:mt-0 sm:col-span-2">
                                                                 <select wire:model="product.active" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                                                                     <option value="">Selecciona una opción</option>
-                                                                    <option value="1">Si</option>
-                                                                    <option value="0">No</option>
+                                                                    <option value="1">{{ __('Yes') }}</option>
+                                                                    <option value="0">{{ __('No') }}</option>
                                                                 </select>
                                                             </div>
                                                         </div>
 
                                                         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                                             <label for="price" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                                                                Orden
+                                                                {{ __('Order') }}
                                                             </label>
                                                             <div class="mt-1 sm:mt-0 sm:col-span-2">
                                                                 <input wire:model="product.order" type="text" name="order" id="order" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                                <p class="mt-2 text-sm text-gray-500">
+                                                                    {{ __('Order should be a number and indicate the product position in the category')}}
+                                                                </p>
                                                             </div>
+
                                                         </div>
 
                                                     </div>
@@ -174,10 +178,10 @@
                                             <div class="pt-5">
                                                 <div class="flex justify-end">
                                                     <button wire:click="showEditProductForm(false);" type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                                        Cancelar
+                                                        {{ __('Cancel')}}
                                                     </button>
                                                     <button wire:click="updateProduct();" type="button" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                                        Guardar
+                                                        {{ __('Save')}}
                                                     </button>
                                                 </div>
                                             </div>
@@ -195,10 +199,10 @@
                                                 <div>
                                                     <div>
                                                         <h3 class="text-lg leading-6 font-medium text-gray-900">
-                                                            Imagenes del producto
+                                                            {{ __('Product Images') }}
                                                         </h3>
                                                         <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                                                            Agregue imagenes para su producto, la primera imagen será usada como portada del producto.
+                                                            {{ __('Add images to your product, first one will be used as the main product image.')}}
                                                         </p>
                                                     </div>
 
@@ -234,7 +238,7 @@
 
                                                     <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                                         <label for="active" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                                                            Seleccione imagen del producto
+                                                            {{ __('Choose a product image') }}
                                                         </label>
                                                         <div class="mt-1 sm:mt-0 sm:col-span-2">
                                                             <input type="file" wire:model="productImage">
@@ -250,7 +254,7 @@
                                                 <div class="flex justify-end">
 
                                                     <button wire:click="saveProductPhoto" type="button" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                                        Cargar Foto
+                                                        {{ __('Upload Image') }}
                                                     </button>
                                                 </div>
                                             </div>

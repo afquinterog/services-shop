@@ -4,6 +4,8 @@
 
     {{--    @include('partials.marketing.header')--}}
     @section('title', $pageTitle)
+    @section('metaDescription', $product->description)
+
 
     @section('content')
 
