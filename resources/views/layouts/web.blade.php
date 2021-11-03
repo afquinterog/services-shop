@@ -4,6 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="description" content="@yield('metaDescription')">
+        <meta name="og:title" property="og:title" content="@yield('title')">
+        <meta name="twitter:card" content="@yield('title')">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
 {{--        <title>{{ config('app.name', 'Laravel') }}</title>--}}
 
@@ -21,6 +25,17 @@
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
         <livewire:styles />
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ session('company')->gtag }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '{{ session('company')->gtag }}');
+        </script>
+
     </head>
     <body {{ $attributes->merge(['class' => '']) }} >
         <header class="border-b border-gray-800">
