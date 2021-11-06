@@ -38,7 +38,7 @@ class Product extends Model
             return Storage::disk('s3')->url('product-image-placeholder.gif');
         }
 
-        return Storage::disk('s3')->url($route);
+        return Storage::disk('s3')->temporaryUrl($route, now()->addMinutes(5));
     }
 
     public function getFormattedPriceAttribute(): string
