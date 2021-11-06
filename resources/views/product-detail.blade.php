@@ -116,12 +116,12 @@
             @if ( $product->images()->count() >= 2)
                 <div class="images-container border-b border-gray-800 pb-12 mt-8">
                     <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Imagenes</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-8">
                         @foreach ($product->slideImages()->get() as $image)
                             <div>
                                 <a href="#">
                                     <img src="{{ $image->linked_route }}" alt="screenshot"
-                                         class="hover:opacity-75 transition ease-in-out duration-150 object-cover rounded-lg">
+                                         class="hover:opacity-75 transition ease-in-out duration-150 object-cover rounded-lg object-cover h-72 w-72">
                                 </a>
                             </div>
                         @endforeach

@@ -7,7 +7,7 @@
             </h2>
         </div>
         <div x-data>
-            <button @click="$dispatch('new-product', {  })"  type="button"
+            <button @click="$dispatch('new-product', {})"  type="button"
                     class="py-2 px-4 border bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm text-sm font-medium text-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 {{ __('New Product') }}
             </button>
@@ -17,7 +17,7 @@
 </x-slot>
 
 
-<div class="py-12" x-data @new-product.window="$wire.productNew()">
+<div class="py-12" x-data @new-product.window="$wire.select()">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="overflow-hidden shadow-sm sm:rounded-lg">
             <div>
@@ -25,7 +25,7 @@
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
 
-                            @if (!$isEditingProduct)
+                            @if (!$isEditing)
                                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg bg-white">
                                     <table class="min-w-full divide-y divide-gray-200">
                                         <thead class="bg-gray-50">
@@ -68,7 +68,7 @@
                                                     {{ $product->slug }}
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <a wire:click="editProduct({{ $product->id }})" href="javascript:void(0);" class="text-indigo-600 hover:text-indigo-900">
+                                                    <a wire:click="select({{ $product->id }})" href="javascript:void(0);" class="text-indigo-600 hover:text-indigo-900">
                                                         {{ __('Editar')}}
                                                     </a>
                                                 </td>
@@ -83,7 +83,7 @@
                                 </div>
                             @endif
 
-                            @if ($isEditingProduct)
+                            @if ($isEditing)
                                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg bg-white">
                                     <div class="p-4">
                                         <form class="space-y-8 divide-y divide-gray-200">
@@ -177,10 +177,10 @@
 
                                             <div class="pt-5">
                                                 <div class="flex justify-end">
-                                                    <button wire:click="showEditProductForm(false);" type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                    <button wire:click="showEditForm(false);" type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                                         {{ __('Cancel')}}
                                                     </button>
-                                                    <button wire:click="updateProduct();" type="button" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                    <button wire:click="update();" type="button" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                                         {{ __('Save')}}
                                                     </button>
                                                 </div>
@@ -219,11 +219,11 @@
                                                                              alt="">
                                                                         <div class="space-y-2">
                                                                             <div class="text-xs font-medium lg:text-sm text-center">
-                                                                                <a href="javascript:void(0);" wire:click="deleteProductPhoto({{$image->id}})" class="text-indigo-600">Eliminar</a>
+                                                                                <a href="javascript:void(0);" wire:click="deletePhoto({{$image->id}})" class="text-indigo-600">Eliminar</a>
                                                                             </div>
                                                                             @if( $image->order >=2 )
                                                                                 <div class="text-xs font-medium lg:text-sm text-center">
-                                                                                    <a href="javascript:void(0);" wire:click="setProductMainPhoto({{$image->id}})" class="text-indigo-600">Usar en portada</a>
+                                                                                    <a href="javascript:void(0);" wire:click="setMainPhoto({{$image->id}})" class="text-indigo-600">Usar en portada</a>
                                                                                 </div>
                                                                             @endif
                                                                         </div>
@@ -253,7 +253,7 @@
                                             <div class="pt-5">
                                                 <div class="flex justify-end">
 
-                                                    <button wire:click="saveProductPhoto" type="button" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                    <button wire:click="savePhoto" type="button" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                                         {{ __('Upload Image') }}
                                                     </button>
                                                 </div>

@@ -16,15 +16,15 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('manage')" :active="request()->routeIs('manage')">
+                    <x-nav-link :href="route('products')" :active="request()->routeIs('products')">
                         {{ __('Products') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('manage')" :active="request()->routeIs('manage')">
+                    <x-nav-link :href="route('categories')" :active="request()->routeIs('categories')">
                         {{ __('Categories') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('manage')" :active="request()->routeIs('manage')">
+                    <x-nav-link :href="route('configuration')" :active="request()->routeIs('configuration')">
                         {{ __('Configuration') }}
                     </x-nav-link>
                 </div>
@@ -79,15 +79,15 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('manage')" :active="request()->routeIs('manage')">
+            <x-responsive-nav-link :href="route('products')" :active="request()->routeIs('products')">
                 {{ __('Products') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('manage')" :active="request()->routeIs('manage')">
+            <x-responsive-nav-link :href="route('categories')" :active="request()->routeIs('categories')">
                 {{ __('Categories') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('manage')" :active="request()->routeIs('manage')">
+            <x-responsive-nav-link :href="route('configuration')" :active="request()->routeIs('configuration')">
                 {{ __('Configuration') }}
             </x-responsive-nav-link>
         </div>

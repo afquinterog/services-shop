@@ -5,7 +5,9 @@ namespace App\Providers;
 use App\Events\OrderCreated;
 use App\Listeners\OrderCreatedEmailNotification;
 use App\Listeners\SetCompanyIdInSession;
+use App\Models\Category;
 use App\Models\Product;
+use App\Observers\CategoryObserver;
 use App\Observers\ProductObserver;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
@@ -42,5 +44,6 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         Product::observe(ProductObserver::class);
+        Category::observe(CategoryObserver::class);
     }
 }

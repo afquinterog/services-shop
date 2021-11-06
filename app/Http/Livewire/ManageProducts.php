@@ -2,10 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Helpers\UI\Utils;
 use App\Http\Livewire\Traits\InteractsWithUI;
 use App\Models\Category;
-use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +12,6 @@ use Livewire\Component;
 
 class ManageProducts extends Component
 {
-
 
     use WithFileUploads, InteractsWithUI;
 
@@ -28,7 +25,7 @@ class ManageProducts extends Component
 
     public $categoryId;
 
-    public $isEditingProduct = false;
+    public $isEditing = false;
 
     protected $rules = [
         'product.name' => 'required|string|min:6',
@@ -38,35 +35,24 @@ class ManageProducts extends Component
         'product.order' => 'required|numeric',
     ];
 
-    protected $listeners = ['new-product' => 'productNew'];
-
     public function mount()
     {
         $this->products = Product::all();
         $this->categories = Category::all();
-
-        $this->count = 0;
-        Utils::formatValue("20000");
     }
 
-    public function editProduct(Product $product)
+    public function select(Product $product=null)
     {
-        $this->showEditProductForm(true);
-        $this->product = $product;
+        $this->product = $product ?? new Product();
+        $this->showEditForm(true);
     }
 
-    public function showEditProductForm($show)
+    public function showEditForm($show)
     {
-        $this->isEditingProduct = $show;
+        $this->isEditing = $show;
     }
 
-    public function productNew()
-    {
-        $this->showEditProductForm(true);
-        $this->product = new Product();
-    }
-
-    public function updateProduct()
+    public function update()
     {
         $this->product->save();
         $this->product->fresh();
@@ -74,11 +60,11 @@ class ManageProducts extends Component
         $this->product->categories()->attach($this->categoryId);
 
         $this->products = Product::all();
-        $this->showEditProductForm(false);
+        $this->showEditForm(false);
         $this->notification(__('Producto Guardado'),  __('Los datos del producto se guardaron correctamente') );
     }
 
-    public function saveProductPhoto()
+    public function savePhoto()
     {
         $this->validate([
             'productImage' => 'image',
@@ -94,13 +80,13 @@ class ManageProducts extends Component
         $this->product->load('images');
     }
 
-    public function deleteProductPhoto(ProductImage $productImage)
+    public function deletePhoto(ProductImage $productImage)
     {
         $productImage->delete();
         $this->product->load('images');
     }
 
-    public function setProductMainPhoto(ProductImage $productImage)
+    public function setMainPhoto(ProductImage $productImage)
     {
         $this->product->images()->each(function ($image){
             $image->order = 2;

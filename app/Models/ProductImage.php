@@ -24,6 +24,11 @@ class ProductImage extends Model
             return Storage::disk('s3')->url('product-image-placeholder.gif');
         }
 
-        return Storage::disk('s3')->url($this->route);
+        //return Storage::disk('s3')->url($this->route);
+
+        return  Storage::disk('s3')->temporaryUrl(
+            $this->route,
+            now()->addMinutes(5)
+        );
     }
 }
