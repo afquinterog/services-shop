@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use App\Http\Livewire\Traits\InteractsWithUI;
 use App\Models\Category;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 
 class ManageCategories extends Component
 {
