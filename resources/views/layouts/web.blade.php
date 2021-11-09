@@ -42,7 +42,7 @@
             <nav class="container mx-auto flex flex-col lg:flex-row items-center justify-between px-4 py-6">
                 <div class="flex flex-col lg:flex-row items-center">
                     <a href="/">
-                        <img src="/logo.png" alt="Sammy Detalles" class="w-20 flex-none">
+                        <img src="{{ session('company')->actual_logo  }}" alt="{{ session('company')->name }}" class="w-20 flex-none">
                     </a>
                     <ul class="flex ml-0 lg:ml-16 space-x-10 mt-6 lg:mt-0">
                         <li><a href="/" class="hover:text-gray-400">Productos</a></li>

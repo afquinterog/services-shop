@@ -21,6 +21,7 @@ class CreateCompaniesTable extends Migration
             $table->string('theme', 30);
             $table->string('meta_description', 200);
             $table->string('gtag', 30);
+            $table->string('logo', 60);
 
             $table->foreignId('user_id')->nullable();
             $table->timestamps();
