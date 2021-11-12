@@ -1,3 +1,5 @@
+@inject('styles', 'App\Services\Style')
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -66,8 +68,26 @@
         </main>
 
         <footer class="border-t border-gray-800">
-            <div class="container mx-auto px-4 py-6">
-                 {{ sprintf("%s %s", now()->format('Y'), strtoupper(session('company_name'))) }}
+            <div class="container mx-auto px-4 py-6 flex flex-wrap flex-col md:flex-row">
+
+                <div class="flex-1 text-center md:text-left">
+                    <a href="http://www.instagram.com/{{ session('company')->instagram  }}"
+                       target="_blank"
+                       class="mr-4 hover:{{ $styles->getTextLinkHoverColor() }}">
+                        Instagram
+                    </a>
+
+                    <a href="https://wa.me/{{ session('company')->whatsapp}}"
+                       target="_blank"
+                       class="mx-4 hover:text-blue-600">
+                        WhatsApp
+                    </a>
+                </div>
+
+                <div class="ml-6 flex-1 text-center md:text-right mt-6 -ml-4 md:-ml-0 md:mt-0 ">
+                    {{ sprintf("%s %s", now()->format('Y'), strtoupper(session('company_name'))) }}
+                </div>
+
             </div>
         </footer>
 

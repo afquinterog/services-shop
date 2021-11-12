@@ -20,6 +20,8 @@ class ManageConfiguration extends Component
         'company.description' => 'required|string|min:10',
         'company.meta_description' => 'required|string|min:10',
         'company.theme' => 'required|string',
+        'company.whatsapp' => 'nullable|string',
+        'company.instagram' => 'nullable|string',
         'companyLogoImage' => 'nullable|image'
     ];
 

@@ -17,6 +17,7 @@ class Style
             'product-price-circle-background-color' => 'bg-gray-300',
             'social-networks-circle-background-color' => 'bg-gray-400',
             'social-networks-circle-hover-color' => 'text-gray-600',
+            'text-link-hover-color' => 'text-blue-500'
         ],
         'dark' => [
             'background' => 'bg-gray-900',
@@ -30,6 +31,7 @@ class Style
             'product-price-circle-background-color' => 'bg-gray-800',
             'social-networks-circle-background-color' => 'bg-gray-400',
             'social-networks-circle-hover-color' => 'bg-gray-600',
+            'text-link-hover-color' => 'text-blue-300'
         ],
     ];
 
@@ -87,6 +89,13 @@ class Style
     {
         return Style::STYLES[session('theme', 'light')]['modal-background-color'];
     }
+
+    public function getTextLinkHoverColor()
+    {
+        return Style::STYLES[session('theme', 'light')]['text-link-hover-color'];
+    }
+
+
 
 
 }

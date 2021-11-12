@@ -22,6 +22,8 @@ class CreateCompaniesTable extends Migration
             $table->string('meta_description', 200);
             $table->string('gtag', 30);
             $table->string('logo', 60);
+            $table->string('instagram', 100)->nullable();
+            $table->string('whatsapp', 100)->nullable();
 
             $table->foreignId('user_id')->nullable();
             $table->timestamps();
