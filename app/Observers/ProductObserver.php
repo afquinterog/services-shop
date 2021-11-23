@@ -32,6 +32,18 @@ class ProductObserver
     }
 
     /**
+     * Handle the Product "saving" event.
+     *
+     * @param  \App\Models\Product  $product
+     * @return void
+     */
+    public function saving(Product $product)
+    {
+        $product->slug = Str::slug($product->name, '-');
+        \Log::info('slug=' . $product->slug);
+    }
+
+    /**
      * Handle the Product "updating" event.
      *
      * @param  \App\Models\Product  $product
@@ -39,8 +51,6 @@ class ProductObserver
      */
     public function updating(Product $product)
     {
-        $product->slug = Str::slug($product->name, '-');
-        \Log::info('slug=' . $product->slug);
     }
 
 
