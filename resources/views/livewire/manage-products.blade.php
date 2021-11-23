@@ -137,7 +137,13 @@
                                                                 <select wire:model="categoryId" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
                                                                     <option value="">Selecciona una categoría</option>
                                                                     @foreach ($categories as $category)
-                                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                                        <option
+                                                                            @if ($product->categories()->first()->id == $category->id)
+                                                                                selected="selected"
+                                                                            @endif
+                                                                            value="{{ $category->id }}">
+                                                                            {{ $category->name }}
+                                                                        </option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
