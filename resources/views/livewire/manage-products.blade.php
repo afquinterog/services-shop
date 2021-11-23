@@ -138,9 +138,6 @@
                                                                     <option value="">Selecciona una categoría</option>
                                                                     @foreach ($categories as $category)
                                                                         <option
-                                                                            @if ($actualCategory == $category->id)
-                                                                                selected
-                                                                            @endif
                                                                             value="{{ $category->id }}">
                                                                             {{ $category->name }}
                                                                         </option>
