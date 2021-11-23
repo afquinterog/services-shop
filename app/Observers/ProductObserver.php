@@ -40,7 +40,6 @@ class ProductObserver
     public function saving(Product $product)
     {
         $product->slug = Str::slug($product->name, '-');
-        \Log::info('slug=' . $product->slug);
     }
 
     /**
