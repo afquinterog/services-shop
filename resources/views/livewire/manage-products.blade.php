@@ -189,10 +189,8 @@
                                     </div>
                                 </div>
 
-
-
-
-                                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg bg-white mt-4">
+                                @if ($product->id)
+                                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg bg-white mt-4">
                                     <div class="p-4">
                                         <form class="space-y-8 divide-y divide-gray-200">
                                             <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
@@ -261,6 +259,7 @@
                                         </form>
                                     </div>
                                 </div>
+                                @endif
                             @endif
 
                         </div>

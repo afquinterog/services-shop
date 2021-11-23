@@ -40,7 +40,9 @@
     "Configuration Management": "Configuración de la tienda",
     "Shop Configuration": "Configuración de la tienda",
     "Information to configure your shop": "Información para configurar tu tienda",
-    "Theme": "Tema"
+    "Theme": "Tema,",
+    "Buy": "Comprar",
+    "Similar options": "Opciones similares"
 
 
 }

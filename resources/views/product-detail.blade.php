@@ -86,7 +86,7 @@
                             <svg class="h-6 w-6 fill-current"  viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
                             </svg>
-                            <span class="ml-2">Comprar</span>
+                            <span class="ml-2">{{ __('Buy') }}</span>
                         </button>
                     </div>
                 </div>
@@ -97,9 +97,11 @@
                     style="background-color: rgba(0, 0, 0, .5); display: none"
                     class="productModal z-50 fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto">
                     <div class="container mx-auto lg:px-64 rounded-lg overflow-y-auto">
-                        <div class="{{ $styles->getModalBackgroundColor() }} rounded" @click.away="openModal = false">
+                        <div class="{{ $styles->getModalBackgroundColor() }} rounded"
+                             @click.away="openModal = false">
                             <div class="flex justify-end pr-4 pt-2">
-                                <button class="text-3xl leading-none hover:text-gray-300" @click="openModal = false">
+                                <button class="text-3xl leading-none hover:text-gray-100 text-gray-300"
+                                        @click="openModal = false">
                                     &times;
                                 </button>
                             </div>
@@ -114,32 +116,65 @@
 
 
             @if ( $product->images()->count() >= 2)
-                <div class="images-container border-b border-gray-800 pb-12 mt-8">
+                <div class="images-container border-b border-gray-800 pb-12 mt-8" x-data="{ isImageModalVisible: false, image: ''}">
                     <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Imagenes</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-8">
                         @foreach ($product->slideImages()->get() as $image)
                             <div>
-                                <a href="#">
-                                    <img src="{{ $image->linked_route }}" alt="screenshot"
+                                <a
+                                   @click="
+                                        image = '{{ $image->linked_route }}';
+                                        isImageModalVisible = true;
+                                    "
+                                >
+                                    <img src="{{ $image->linked_route }}" alt="{{ $product->name }}"
                                          class="hover:opacity-75 transition ease-in-out duration-150 object-cover rounded-lg object-cover h-72 w-72">
                                 </a>
                             </div>
                         @endforeach
                     </div>
+
+                    <template x-if="isImageModalVisible">
+                        <div
+                            @click="isImageModalVisible = false"
+                            style="background-color: rgba(0, 0, 0, .5);"
+                            class="z-50 fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto bg-red-500"
+                        >
+                            <div
+                                class="container mx-auto lg:px-32 rounded-lg overflow-y-auto">
+                                <div
+                                    class="bg-gray-900 rounded">
+                                    <div class="flex justify-end pr-4 pt-2">
+                                        <button
+                                            class="text-3xl leading-none hover:text-gray-100 text-gray-300"
+                                            @click="isImageModalVisible = false"
+                                            @keydown.escape.window="isImageModalVisible = false">
+                                            &times;
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="modal-body px-8 py-8 ">
+                                        <img :src="image" alt="{{ $product->name }}" class="object-contain">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+
                 </div> <!-- end images-container -->
             @endif
 
 
             @if($product->similarProducts()->count() >= 1)
                 <div class="similar-products-container mt-8">
-                    <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Opciones similares</h2>
+                    <h2 class="text-blue-500 uppercase tracking-wide font-semibold">{{ __('Similar options') }}</h2>
                     <div
                         class="similar-products text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-12">
                         @foreach ($product->similarProducts() as $product)
                             <div class="product mt-8">
                                 <div class="relative inline-block">
                                     <a href="#">
-                                        <img src="{{ Storage::url('images/desayuno1-pre.jpeg') }}" alt="product cover"
+                                        <img src="{{ $product->getFirstImage() }}" alt="{{ $product->name }}"
                                              class="hover:opacity-75 transition ease-in-out duration-150">
                                     </a>
                                     <div class="absolute bottom-0 right-0 w-16 h-16 {{ $styles->getProductPriceCircleBackgroundColor() }} rounded-full"

@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ProductObserver
 {
@@ -16,6 +17,7 @@ class ProductObserver
     public function creating(Product $product)
     {
         $product->company_id = Auth::user()->companies()->first()->id;
+        $product->slug = Str::slug($product->name, '-');
     }
 
     /**
@@ -28,6 +30,19 @@ class ProductObserver
     {
         //
     }
+
+    /**
+     * Handle the Product "updating" event.
+     *
+     * @param  \App\Models\Product  $product
+     * @return void
+     */
+    public function updating(Product $product)
+    {
+        $product->slug = Str::slug($product->name, '-');
+        \Log::info('slug=' . $product->slug);
+    }
+
 
     /**
      * Handle the Product "updated" event.

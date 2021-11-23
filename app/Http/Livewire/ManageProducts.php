@@ -6,6 +6,7 @@ use App\Http\Livewire\Traits\InteractsWithUI;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithFileUploads;
 use Livewire\Component;
@@ -37,8 +38,8 @@ class ManageProducts extends Component
 
     public function mount()
     {
-        $this->products = Product::all();
-        $this->categories = Category::all();
+        $this->products = $this->getProducts();
+        $this->categories = $this->getCategories();
     }
 
     public function select(Product $product=null)
@@ -59,8 +60,8 @@ class ManageProducts extends Component
         $this->product->categories()->detach();
         $this->product->categories()->attach($this->categoryId);
 
-        $this->products = Product::all();
-        $this->showEditForm(false);
+        $this->products = $this->getProducts();
+        //$this->showEditForm(false);
         $this->notification(__('Producto Guardado'),  __('Los datos del producto se guardaron correctamente') );
     }
 
@@ -103,5 +104,15 @@ class ManageProducts extends Component
         return view('livewire.manage-products',[
             'products' => $this->products
         ]);
+    }
+
+    private function getProducts(): Collection
+    {
+        return Product::orderBy('name')->get();
+    }
+
+    private function getCategories(): Collection
+    {
+        return Category::all();
     }
 }

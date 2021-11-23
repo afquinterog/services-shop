@@ -22,9 +22,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ShopController::class, 'index'])->middleware('link.domain.company');
-Route::get('/products/{products:slug}', [ShopController::class, 'details'])->middleware('link.domain.company')->name('product-details');;
-Route::resource('products', ShopController::class)->middleware('link.domain.company');
+Route::get('/', [ShopController::class, 'index'])
+    ->middleware('link.domain.company');
+
+Route::get('/products/{products:slug}', [ShopController::class, 'details'])
+    ->middleware('link.domain.company')
+    ->name('product.details');
+
+Route::resource('products', ShopController::class)
+    ->middleware('link.domain.company');
 
 
 Route::middleware(['auth'])->group(function () {
