@@ -138,7 +138,7 @@
                                                                     <option value="">Selecciona una categoría</option>
                                                                     @foreach ($categories as $category)
                                                                         <option
-                                                                            @if ($product->categories()->get()->first()->id == $category->id)
+                                                                            @if ($actualCategory == $category->id)
                                                                                 selected="selected"
                                                                             @endif
                                                                             value="{{ $category->id }}">

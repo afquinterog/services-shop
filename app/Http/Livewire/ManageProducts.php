@@ -22,6 +22,8 @@ class ManageProducts extends Component
 
     public $product;
 
+    public $actualCategory;
+
     public $productImage;
 
     public $categoryId;
@@ -45,6 +47,7 @@ class ManageProducts extends Component
     public function select(Product $product=null)
     {
         $this->product = $product ?? new Product();
+        $this->actualCategory = $product->categories()->get()->first()->id;
         $this->showEditForm(true);
     }
 
