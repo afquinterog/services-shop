@@ -139,7 +139,7 @@
                                                                     @foreach ($categories as $category)
                                                                         <option
                                                                             @if ($actualCategory == $category->id)
-                                                                                selected="selected"
+                                                                                selected
                                                                             @endif
                                                                             value="{{ $category->id }}">
                                                                             {{ $category->name }}
