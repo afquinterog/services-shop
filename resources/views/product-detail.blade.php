@@ -173,7 +173,7 @@
                         @foreach ($product->similarProducts() as $product)
                             <div class="product mt-8">
                                 <div class="relative inline-block">
-                                    <a href="#">
+                                    <a href="#s">
                                         <img src="{{ $product->getFirstImage() }}" alt="{{ $product->name }}"
                                              class="hover:opacity-75 transition ease-in-out duration-150">
                                     </a>
