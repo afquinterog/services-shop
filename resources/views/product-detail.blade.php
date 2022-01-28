@@ -24,6 +24,11 @@
                         <span>{{ $product->categories_description }}</span>
                     </div>
 
+                    @if ($product->rate > 0)
+                        <x-rating :rate="4" />
+                    @endif
+
+
                     <div class="flex flex-wrap items-center mt-8">
                         <div class="flex items-center">
                             <div class="w-16 h-16 {{ $styles->getProductPriceCircleBackgroundColor() }} rounded-full">
