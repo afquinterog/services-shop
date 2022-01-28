@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\ProductRate;
+use App\Observers\ProductRateObserver;
 use App\Repositories\Contracts\CategoryRepository;
 use App\Repositories\Contracts\CompanyRepository;
 use App\Repositories\Contracts\ProductRateRepository;
@@ -43,6 +45,6 @@ class ServicesShopProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        ProductRate::observe(ProductRateObserver::class);
     }
 }
