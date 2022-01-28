@@ -30,6 +30,11 @@ class Product extends Model
         return $this->hasMany(Order::class);
     }
 
+    public function ratings()
+    {
+        return $this->hasMany(ProductRate::class);
+    }
+
     public function getFirstImage(): string
     {
         $route = optional($this->images()->first())->route;
