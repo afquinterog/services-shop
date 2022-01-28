@@ -118,10 +118,7 @@ class ShopController extends Controller
      */
     public function details(Request $request, $slug)
     {
-        $company = Company::findOrFail($request->session()->get('company_id'));
         $product = Product::where('slug', $slug)->first();
-        $pageTitle = $company->name . " " . $product->name ;
-
-        return view('product-detail', compact('pageTitle','product'));
+        return $this->show($request, $product->id);
     }
 }

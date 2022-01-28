@@ -18,10 +18,10 @@ class CreateCompaniesTable extends Migration
             $table->string('code', 20);
             $table->string('name', 100);
             $table->string('description')->nullable();
-            $table->string('theme', 30);
-            $table->string('meta_description', 200);
-            $table->string('gtag', 30);
-            $table->string('logo', 60);
+            $table->string('theme', 30)->default('light');
+            $table->string('meta_description', 200)->nullable();
+            $table->string('gtag', 30)->nullable();
+            $table->string('logo', 60)->nullable();
             $table->string('instagram', 100)->nullable();
             $table->string('whatsapp', 100)->nullable();
 
