@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->boolean('active')->default(false);
             $table->foreignId('company_id')->nullable();
             $table->tinyInteger('order');
+            $table->tinyInteger('rating')->default(0)->nullable();
             $table->timestamps();
         });
     }
