@@ -1,4 +1,5 @@
 {
+    "Admin": "Administración",
     "Logout": "Cerrar sesión",
 
     "Categories": "Categorías",
@@ -42,7 +43,17 @@
     "Information to configure your shop": "Información para configurar tu tienda",
     "Theme": "Tema,",
     "Buy": "Comprar",
-    "Similar options": "Opciones similares"
+    "Similar options": "Opciones similares",
+    "Please complete the following information": "Por favor ingresa la siguiente información para completar el pedido",
+    "Press / for search": "Presiona / para buscar ...",
+    "Image Slide": "Imagenes",
 
 
+    "Phone": "Teléfono",
+    "Quantity": "Cantidad",
+    "Send": "Enviar",
+
+    "Sending the message ...": "Enviando el mensaje ...",
+    "Rate received, thanks for help us to improve.": "Calificación recibida, gracias por ayudarnos a mejorar",
+    "Order received, our team will reach to you soon.": "Hemos recibido tu pedido, nuestro equipo de servicio al cliente te contactará pronto."
 }

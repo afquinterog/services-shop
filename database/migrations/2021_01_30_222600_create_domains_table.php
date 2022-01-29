@@ -17,6 +17,7 @@ class CreateDomainsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('domain', 100);
+            $table->string('locale', 100)->default('en');
             $table->foreignId('company_id');
         });
     }
