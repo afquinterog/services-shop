@@ -9,7 +9,7 @@ interface ProductRateRepository
 {
 
 
-    public function rate(Product $product, int $rate);
+    public function rate(Product $product, int $rate, string $message='');
 
     public function getRatings(Product $product): Collection;
 

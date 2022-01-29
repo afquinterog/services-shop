@@ -16,7 +16,8 @@ class CreateProductRatesTable extends Migration
         Schema::create('product_rates', function (Blueprint $table) {
             $table->id();
             $table->smallInteger('rating');
-            $table->foreignId('product_id')->constrained();;
+            $table->foreignId('product_id')->constrained();
+            $table->string('message');
             $table->timestamps();
         });
     }

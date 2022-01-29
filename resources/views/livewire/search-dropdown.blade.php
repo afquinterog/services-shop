@@ -6,7 +6,7 @@
         wire:model.debounce.300ms="search"
         type="text"
         class="{{ $styles->getSearchBarBackgroundColor() }} text-sm rounded-full px-3 py-1 w-64 pl-8 focus:outline-none focus:shadow-outline"
-        placeholder="Presiona / para buscar ..."
+        placeholder="{{ __('Press / for search ...') }}"
         @focus="isVisible = true"
         @keydown="isVisible = true "
         @keydown.shift.tab="isVisible = false"

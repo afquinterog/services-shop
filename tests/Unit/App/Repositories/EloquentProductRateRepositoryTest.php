@@ -31,11 +31,17 @@ class EloquentProductRateRepositoryTest extends TestCase
         $product =  Product::factory()->create();
 
         //Act
-        $productRateRepository->rate($product, 4);
+        $productRateRepository->rate($product, 4, "Comment for the rate");
 
         //Assert
         $this->assertCount(1, $productRateRepository->getRatings($product));
-        $this->assertEquals(4, $productRateRepository->getRatings($product)->first()->rating);
+
+        tap($productRateRepository->getRatings($product)->first(), function ($rate){
+            $this->assertEquals(4, $rate->rating);
+            $this->assertEquals("Comment for the rate", $rate->message);
+        });
+
+
     }
 
     public function test_service_rate_is_calculated_properly()

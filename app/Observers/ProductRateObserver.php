@@ -2,10 +2,13 @@
 
 namespace App\Observers;
 
+use App\Models\Product;
 use App\Models\ProductRate;
+use App\Repositories\Contracts\ProductRateRepository;
 
 class ProductRateObserver
 {
+
     /**
      * Handle the ProductRate "created" event.
      *
@@ -14,50 +17,15 @@ class ProductRateObserver
      */
     public function created(ProductRate $productRate)
     {
-        //
+        $this->calculateRate($productRate->product);
     }
 
-    /**
-     * Handle the ProductRate "updated" event.
-     *
-     * @param  \App\Models\ProductRate  $productRate
-     * @return void
-     */
-    public function updated(ProductRate $productRate)
+    private function calculateRate(Product $product): void
     {
-        //
-    }
+        /* @var ProductRateRepository $productRateRepository */
+        $productRateRepository = resolve(ProductRateRepository::class);
 
-    /**
-     * Handle the ProductRate "deleted" event.
-     *
-     * @param  \App\Models\ProductRate  $productRate
-     * @return void
-     */
-    public function deleted(ProductRate $productRate)
-    {
-        //
-    }
-
-    /**
-     * Handle the ProductRate "restored" event.
-     *
-     * @param  \App\Models\ProductRate  $productRate
-     * @return void
-     */
-    public function restored(ProductRate $productRate)
-    {
-        //
-    }
-
-    /**
-     * Handle the ProductRate "force deleted" event.
-     *
-     * @param  \App\Models\ProductRate  $productRate
-     * @return void
-     */
-    public function forceDeleted(ProductRate $productRate)
-    {
-        //
+        //Calculate rate for product
+        $productRateRepository->calculate($product);
     }
 }

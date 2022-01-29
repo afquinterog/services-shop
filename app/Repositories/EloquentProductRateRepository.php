@@ -16,10 +16,11 @@ class EloquentProductRateRepository implements ProductRateRepository
         return $product->ratings()->get();
     }
 
-    public function rate(Product $product, int $rate)
+    public function rate(Product $product, int $rate, $message='')
     {
         $product->ratings()->create([
-           'rating' => $rate
+           'rating' => $rate,
+            'message' => $message
         ]);
     }
 

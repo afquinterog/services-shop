@@ -1,4 +1,4 @@
-<div class="flex flex-column">p
+<div class="flex flex-column">
     @for ($i = 1; $i <= 5; $i++)
         @if ($i <= $rate)
             <span class="text-yellow-300">
