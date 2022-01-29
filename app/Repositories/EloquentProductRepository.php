@@ -29,31 +29,4 @@ class EloquentProductRepository implements ProductRepository
     {
         return Product::orderBy($order)->get();
     }
-
-    public function includeInCategory(Product $product, Category $category): Model
-    {
-        Gate::authorize('create', Product::class);
-        return $category->products()->save($product);
-    }
-
-    public function addImage(Product $product, $imageRoute): Model
-    {
-        return $product->images()->create([
-            'route' => $imageRoute,
-            'order' => 1,
-        ]);
-    }
-
-    public function addOrder(Product $product, Order $order): void
-    {
-        $product->orders()->save($order);
-        //Dispatch event order added
-        OrderCreated::dispatch($order);
-
-    }
-
-    public function getImages(Product $product): Collection
-    {
-        return $product->images()->get();
-    }
 }

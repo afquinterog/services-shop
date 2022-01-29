@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Http\Livewire\Traits\InteractsWithUI;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Repositories\Contracts\CategoryRepository;
@@ -45,10 +46,13 @@ class ManageProducts extends Component
         $this->categories = $this->getCategories();
     }
 
-    public function select(CategoryRepository $categoryRepository, Product $product = null)
+    public function select(
+        CategoryRepository $categoryRepository,
+        ProductCategoryRepository $productCategoryRepository,
+        Product $product = null)
     {
         $this->product = $product ?? new Product();
-        $this->categoryId = $categoryRepository->all()->first()->id ?? null;
+        $this->categoryId = $productCategoryRepository->get($product)->first()->id ?? "";
         $this->showEditForm(true);
     }
 
@@ -59,7 +63,7 @@ class ManageProducts extends Component
 
     public function update(ProductCategoryRepository $productCategoryRepository)
     {
-        $productCategoryRepository->save($this->product, [$this->categoryId]);
+        $productCategoryRepository->save($this->product, Category::find($this->categoryId));
         $this->products = $this->getProducts();
         $this->notification(__('Product Stored'), __('Product information stored properly'));
     }

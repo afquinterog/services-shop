@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Order;
 use App\Models\Product;
+use App\Repositories\Contracts\ProductOrderRepository;
 use App\Repositories\Contracts\ProductRepository;
 use App\Traits\CompanyAware;
 use Livewire\Component;
@@ -46,11 +47,11 @@ class ProductOrderForm extends Component
         ]);
     }
 
-    public function createOrder(ProductRepository $productRepository)
+    public function createOrder(ProductOrderRepository $productOrderRepository)
     {
         $this->validate();
         $this->setCompany($this->order);
-        $productRepository->addOrder($this->product, $this->order);
+        $productOrderRepository->save($this->product, $this->order);
 
         //Clean data
         $this->order = new Order();
