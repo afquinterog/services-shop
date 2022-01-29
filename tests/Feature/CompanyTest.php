@@ -36,7 +36,6 @@ class CompanyTest extends TestCase
      */
     public function an_admin_can_create_a_company()
     {
-
         //Login as the user
         Auth::login($this->admin);
 
@@ -45,7 +44,7 @@ class CompanyTest extends TestCase
 
         $company = Company::factory()->for(User::factory())->make();
 
-        $companyRepository = App::make(CompanyRepository::class);
+        $companyRepository = resolve(CompanyRepository::class);
         $companyRepository->save($company);
 
         //Assert a company has been created
@@ -124,16 +123,10 @@ class CompanyTest extends TestCase
     public function when_a_domain_access_the_website_should_be_linked_to_the_company_that_owns_the_domain()
     {
         $company = $this->createACompany();
-        $this->addDomainToCompany($company, 'http://localhost');
+        $this->addDomainToCompany($company, 'localhost');
 
-        //Create a company
-        //Associate the company with a domain
-        //Access the site using a domain
-        //Check the company id is stored in the session
-
-        //$response = $this->get('/');
         $response = $this->withHeaders([
-            //'host' => 'mysuperdomain.com',
+            'host' => 'http://localhost',
         ])->get('/');
 
         $response->assertStatus(200);
@@ -178,11 +171,11 @@ class CompanyTest extends TestCase
     private function addDomainToCompany($company, $domain)
     {
         $domain = Domain::factory()->make([
-            'domain' => 'http://localhost'
+            'domain' => $domain
         ]);
 
         Auth::login($this->admin);
-        $companyRepository = App::make(CompanyRepository::class);
+        $companyRepository = resolve(CompanyRepository::class);
         $companyRepository->addDomain($company, $domain);
         Auth::logout();
     }

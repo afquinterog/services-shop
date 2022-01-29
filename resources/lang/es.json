@@ -55,5 +55,8 @@
 
     "Sending the message ...": "Enviando el mensaje ...",
     "Rate received, thanks for help us to improve.": "Calificación recibida, gracias por ayudarnos a mejorar",
-    "Order received, our team will reach to you soon.": "Hemos recibido tu pedido, nuestro equipo de servicio al cliente te contactará pronto."
+    "Order received, our team will reach to you soon.": "Hemos recibido tu pedido, nuestro equipo de servicio al cliente te contactará pronto.",
+
+    "Product Stored": "Producto guardado",
+    "Product information stored properly": "Los datos del producto se guardaron correctamente"
 }

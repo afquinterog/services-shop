@@ -3,17 +3,18 @@
 namespace App\Http\Livewire;
 
 use App\Http\Livewire\Traits\InteractsWithUI;
-use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Repositories\Contracts\CategoryRepository;
+use App\Repositories\Contracts\ProductCategoryRepository;
+use App\Repositories\Contracts\ProductImageRepository;
+use App\Repositories\Contracts\ProductRepository;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Auth;
 use Livewire\WithFileUploads;
 use Livewire\Component;
 
 class ManageProducts extends Component
 {
-
     use WithFileUploads, InteractsWithUI;
 
     public $products;
@@ -44,10 +45,10 @@ class ManageProducts extends Component
         $this->categories = $this->getCategories();
     }
 
-    public function select(Product $product=null)
+    public function select(CategoryRepository $categoryRepository, Product $product = null)
     {
         $this->product = $product ?? new Product();
-        $this->categoryId = $product->categories()->get()->first()->id ?? null;
+        $this->categoryId = $categoryRepository->all()->first()->id ?? null;
         $this->showEditForm(true);
     }
 
@@ -56,66 +57,53 @@ class ManageProducts extends Component
         $this->isEditing = $show;
     }
 
-    public function update()
+    public function update(ProductCategoryRepository $productCategoryRepository)
     {
-        $this->product->save();
-        $this->product->fresh();
-        $this->product->categories()->detach();
-        $this->product->categories()->attach($this->categoryId);
-
+        $productCategoryRepository->save($this->product, [$this->categoryId]);
         $this->products = $this->getProducts();
-        //$this->showEditForm(false);
-        $this->notification(__('Producto Guardado'),  __('Los datos del producto se guardaron correctamente') );
+        $this->notification(__('Product Stored'), __('Product information stored properly'));
     }
 
-    public function savePhoto()
+    public function savePhoto(ProductImageRepository $productImageRepository)
     {
         $this->validate([
             'productImage' => 'image',
         ]);
 
-        $storagePath = Auth::user()->companies()->first()->id . '';
-        $path = $this->productImage->store($storagePath, 's3');
-        $this->product->images()->create([
-            'route' => $path,
-            'order' => 2
-        ]);
-
-        $this->product->load('images');
+        $productImageRepository->save($this->product, $this->productImage);
+        $this->product = $productImageRepository->refresh($this->product);
     }
 
-    public function deletePhoto(ProductImage $productImage)
+    public function deletePhoto(ProductImageRepository $productImageRepository, ProductImage $productImage)
     {
-        $productImage->delete();
-        $this->product->load('images');
+        $productImageRepository->delete($productImage);
+        $this->product = $productImageRepository->refresh($this->product);
     }
 
-    public function setMainPhoto(ProductImage $productImage)
+    public function setMainPhoto(ProductImageRepository $productImageRepository, ProductImage $productImage)
     {
-        $this->product->images()->each(function ($image){
-            $image->order = 2;
-            $image->save();
-        });
-
-        $productImage->order = 1;
-        $productImage->save();
-        $this->product->load('images');
+        $productImageRepository->setFeatured($this->product, $productImage);
+        $this->product = $productImageRepository->refresh($this->product);
     }
 
     public function render()
     {
-        return view('livewire.manage-products',[
+        return view('livewire.manage-products', [
             'products' => $this->products
         ]);
     }
 
     private function getProducts(): Collection
     {
-        return Product::orderBy('name')->get();
+        /* @var \App\Repositories\Contracts\ProductRepository $productRepository */
+        $productRepository = resolve(ProductRepository::class);
+        return $productRepository->orderBy('name');
     }
 
     private function getCategories(): Collection
     {
-        return Category::all();
+        /* @var \App\Repositories\Contracts\CategoryRepository $categoryRepository */
+        $categoryRepository = resolve(CategoryRepository::class);
+        return $categoryRepository->all();
     }
 }

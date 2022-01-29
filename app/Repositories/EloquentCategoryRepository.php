@@ -21,8 +21,12 @@ class EloquentCategoryRepository implements CategoryRepository
         return $category->save();
     }
 
-    public function getAll(): Collection
+    public function all(array $with = null, $order = 'order'): Collection
     {
-        return Category::with('products')->orderBy('order')->get();
+        if ($with) {
+            Category::with($with)->orderBy('order')->get();
+        }
+
+        return Category::orderBy('order')->get();
     }
 }

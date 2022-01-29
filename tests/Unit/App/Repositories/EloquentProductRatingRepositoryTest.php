@@ -8,12 +8,12 @@ use App\Models\Company;
 use App\Models\Product;
 use App\Models\ProductRate;
 use App\Models\User;
-use App\Repositories\Contracts\ProductRateRepository;
+use App\Repositories\Contracts\ProductRatingRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
-class EloquentProductRateRepositoryTest extends TestCase
+class EloquentProductRatingRepositoryTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -27,16 +27,16 @@ class EloquentProductRateRepositoryTest extends TestCase
         ]);
 
         Auth::login($user);
-        $productRateRepository = resolve(ProductRateRepository::class);
-        $product =  Product::factory()->create();
+        $productRateRepository = resolve(ProductRatingRepository::class);
+        $product = Product::factory()->create();
 
         //Act
-        $productRateRepository->rate($product, 4, "Comment for the rate");
+        $productRateRepository->save($product, 4, "Comment for the rate");
 
         //Assert
-        $this->assertCount(1, $productRateRepository->getRatings($product));
+        $this->assertCount(1, $productRateRepository->get($product));
 
-        tap($productRateRepository->getRatings($product)->first(), function ($rate){
+        tap($productRateRepository->get($product)->first(), function ($rate) {
             $this->assertEquals(4, $rate->rating);
             $this->assertEquals("Comment for the rate", $rate->message);
         });
@@ -55,13 +55,13 @@ class EloquentProductRateRepositoryTest extends TestCase
 
         Auth::login($user);
 
-        $productRateRepository = resolve(ProductRateRepository::class);
+        $productRateRepository = resolve(ProductRatingRepository::class);
 
-        $product =  Product::factory()->create();
+        $product = Product::factory()->create();
 
-        $productRateRepository->rate($product, 4);
-        $productRateRepository->rate($product, 3);
-        $productRateRepository->rate($product, 5);
+        $productRateRepository->save($product, 4);
+        $productRateRepository->save($product, 3);
+        $productRateRepository->save($product, 5);
 
         //Act
         $productRateRepository->calculate($product);
@@ -82,13 +82,13 @@ class EloquentProductRateRepositoryTest extends TestCase
 
         Auth::login($user);
 
-        $productRateRepository = resolve(ProductRateRepository::class);
+        $productRateRepository = resolve(ProductRatingRepository::class);
 
-        $product =  Product::factory()->create();
+        $product = Product::factory()->create();
 
         //Act
-        $productRateRepository->rate($product, 5);
-        $productRateRepository->rate($product, 3);
+        $productRateRepository->save($product, 5);
+        $productRateRepository->save($product, 3);
 
         //Assert
         $this->assertEquals(4, $product->fresh()->rating);

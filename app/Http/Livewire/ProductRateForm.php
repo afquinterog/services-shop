@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Product;
 use App\Models\ProductRate;
-use App\Repositories\Contracts\ProductRateRepository;
+use App\Repositories\Contracts\ProductRatingRepository;
 use Livewire\Component;
 
 class ProductRateForm extends Component
@@ -34,7 +34,7 @@ class ProductRateForm extends Component
         $this->validateOnly($propertyName);
     }
 
-    public function createRate(ProductRateRepository $productRateRepository)
+    public function createRate(ProductRatingRepository $productRateRepository)
     {
         $this->validate();
 

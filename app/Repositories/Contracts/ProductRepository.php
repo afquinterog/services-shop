@@ -14,7 +14,12 @@ interface  ProductRepository
 {
     public function save(Product $product): bool;
 
-    public function getAll(): Collection;
+    public function all(): Collection;
+
+    public function orderBy(string $order): Collection;
+
+
+    ///Delete
 
     public function includeInCategory(Product $product, Category $category): Model;
 

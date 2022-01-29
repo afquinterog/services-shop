@@ -35,7 +35,7 @@ class ShopController extends Controller
     {
         $company = Company::findOrFail($request->session()->get('company_id'));
         //Get categories and products from service
-        $categories = App::make(CategoryRepository::class)->getAll();
+        $categories = resolve(CategoryRepository::class)->all();
 
         return view('web', [
             'company_id' => $company->id,

@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Company;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -29,12 +30,19 @@ class OrderTest extends TestCase
         $this->company = Company::factory()->create([
             'user_id' => $this->owner->id
         ]);
+
+
     }
 
     public function test_an_order_can_be_created()
     {
+        $this->actingAs($this->owner);
+
         //Arrange
+        $product = Product::factory()->create([]);
+
         $order = Order::factory()->make([
+            'product_id' => $product->id
         ]);
 
         //Act
@@ -42,14 +50,6 @@ class OrderTest extends TestCase
 
         //Assert
         $this->assertDatabaseCount('orders', 1);
-    }
-
-    public function test_an_email_should_be_sent_when_an_order_is_created()
-    {
-        //Arrange
-
-        //Act
-        //Assert
     }
 
 }

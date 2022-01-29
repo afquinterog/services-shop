@@ -20,9 +20,14 @@ class EloquentProductRepository implements ProductRepository
         return $product->save();
     }
 
-    public function getAll(): Collection
+    public function all(): Collection
     {
-        return Product::orderBy('order')->get();
+        return self::orderBy('order');
+    }
+
+    public function orderBy(string $order): Collection
+    {
+        return Product::orderBy($order)->get();
     }
 
     public function includeInCategory(Product $product, Category $category): Model

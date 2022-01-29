@@ -44,7 +44,7 @@ class CategoriesTest extends TestCase
 
         $category = Category::factory()->make();
 
-        $categoryRepository = App::make(CategoryRepository::class);
+        $categoryRepository = resolve(CategoryRepository::class);
         $categoryRepository->save($category);
 
         //Assert a company has been created
@@ -66,14 +66,14 @@ class CategoriesTest extends TestCase
             'order' => 2
         ]);
 
-        $categoryRepository = App::make(CategoryRepository::class);
+        $categoryRepository = resolve(CategoryRepository::class);
         $categoryRepository->save($category1);
         $categoryRepository->save($category2);
 
         //Assert a company has been created
         $this->assertDatabaseCount('categories', 2);
 
-        $categories = $categoryRepository->getAll();
+        $categories = $categoryRepository->all();
 
         $this->assertEquals("category1", $categories->first()->code);
     }

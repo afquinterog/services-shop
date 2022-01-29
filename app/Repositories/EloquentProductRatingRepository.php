@@ -5,18 +5,18 @@ namespace App\Repositories;
 
 
 use App\Models\Product;
-use App\Repositories\Contracts\ProductRateRepository;
+use App\Repositories\Contracts\ProductRatingRepository;
 use Illuminate\Database\Eloquent\Collection;
 
-class EloquentProductRateRepository implements ProductRateRepository
+class EloquentProductRatingRepository implements ProductRatingRepository
 {
 
-    public function getRatings(Product $product): Collection
+    public function get(Product $product): Collection
     {
         return $product->ratings()->get();
     }
 
-    public function rate(Product $product, int $rate, $message='')
+    public function save(Product $product, int $rate, $message='')
     {
         $product->ratings()->create([
            'rating' => $rate,

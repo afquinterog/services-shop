@@ -4,7 +4,7 @@ namespace App\Observers;
 
 use App\Models\Product;
 use App\Models\ProductRate;
-use App\Repositories\Contracts\ProductRateRepository;
+use App\Repositories\Contracts\ProductRatingRepository;
 
 class ProductRateObserver
 {
@@ -22,8 +22,8 @@ class ProductRateObserver
 
     private function calculateRate(Product $product): void
     {
-        /* @var ProductRateRepository $productRateRepository */
-        $productRateRepository = resolve(ProductRateRepository::class);
+        /* @var ProductRatingRepository $productRateRepository */
+        $productRateRepository = resolve(ProductRatingRepository::class);
 
         //Calculate rate for product
         $productRateRepository->calculate($product);

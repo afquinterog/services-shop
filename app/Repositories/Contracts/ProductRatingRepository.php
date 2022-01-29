@@ -5,13 +5,11 @@ namespace App\Repositories\Contracts;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Collection;
 
-interface ProductRateRepository
+interface ProductRatingRepository
 {
+    public function save(Product $product, int $rate, string $message='');
 
-
-    public function rate(Product $product, int $rate, string $message='');
-
-    public function getRatings(Product $product): Collection;
+    public function get(Product $product): Collection;
 
     /**
      * Calculate the product average rating
