@@ -5,7 +5,7 @@ namespace App\View\Components;
 use App\Models\Product;
 use Illuminate\View\Component;
 
-class ProductPreview extends Component
+class MarketplaceProductPreview extends Component
 {
 
     public Product $product;
@@ -27,6 +27,6 @@ class ProductPreview extends Component
      */
     public function render()
     {
-        return view('components.product-preview');
+        return view('components.marketplace-product-preview');
     }
 }

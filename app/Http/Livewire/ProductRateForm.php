@@ -38,7 +38,7 @@ class ProductRateForm extends Component
     {
         $this->validate();
 
-        $productRateRepository->rate($this->product, $this->rate->rating, $this->rate->message);
+        $productRateRepository->save($this->product, $this->rate->rating, $this->rate->message);
         $this->rate = new ProductRate();
         $this->rateSent = true;
     }

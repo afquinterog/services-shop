@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Models\Product;
 use App\Models\ProductRate;
 use App\Repositories\Contracts\ProductRatingRepository;
+use App\Scopes\CompanyScope;
 
 class ProductRateObserver
 {
@@ -17,7 +18,8 @@ class ProductRateObserver
      */
     public function created(ProductRate $productRate)
     {
-        $this->calculateRate($productRate->product);
+        $product = Product::withoutGlobalScope(CompanyScope::class)->find($productRate->product_id);
+        $this->calculateRate($product);
     }
 
     private function calculateRate(Product $product): void

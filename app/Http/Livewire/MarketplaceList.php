@@ -59,6 +59,7 @@ class MarketplaceList extends Component
         /* @var \App\Repositories\Contracts\MarketplaceRepository $marketPlaceRepository */
         $marketPlaceRepository = resolve(MarketplaceRepository::class);
 
-        return $marketPlaceRepository->get(self::ITEMS_PER_PAGE, $this->order, $this->search, $this->actualCategory, $this->actualVendor);
+        $products = $marketPlaceRepository->get(self::ITEMS_PER_PAGE, $this->order, $this->search, $this->actualCategory, $this->actualVendor);
+        return $products;
     }
 }

@@ -58,5 +58,13 @@
     "Order received, our team will reach to you soon.": "Hemos recibido tu pedido, nuestro equipo de servicio al cliente te contactará pronto.",
 
     "Product Stored": "Producto guardado",
-    "Product information stored properly": "Los datos del producto se guardaron correctamente"
+    "Product information stored properly": "Los datos del producto se guardaron correctamente",
+
+    "Welcome": "Bienvenido",
+    "shop_introduction": "En esta sección puedes configurar tu tienda, en solo un par de minutos estarás listo para abrir tu negocio al mundo. En esta sección te explicaremos como hacerlo paso por paso.",
+    "Create categories": "Crea tus categorías",
+    "Products are grouped in categories, so lets start creating a couple of categories.": "Tus productos se agrupan en categorías, puedes iniciar creando un par de categorías.",
+    "Create products": "Crear productos,",
+    "product-description": "Ahora que ya tienes tus categorías puedes crear tus productos. Ah y no olvides asociarlos a las categorías a las que pertenecen",
+    "Site configuration": "Es importante agregar una descripción, un correo y un teléfono para que te contacten tus futuros clientes. Toda esta información la puedes ajustar en la configuración de tu tienda."
 }

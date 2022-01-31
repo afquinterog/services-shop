@@ -21,10 +21,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('link.domain.company')->group(function () {
     Route::get('/', [ShopController::class, 'index']);
-    Route::get('/products/{product:slug}', [ShopController::class, 'details'])->name('products.details');
+    Route::get('/my-products/{product:slug}', [ShopController::class, 'details'])->name('my-products.details');
 });
 
 Route::get('/marketplace', [MarketPlaceController::class, 'index']);
+Route::get('/products/{product:slug}', [MarketPlaceController::class, 'details'])->name('products.details');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
