@@ -29,13 +29,13 @@
         <livewire:styles />
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id={{ session('company')->gtag }}"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ session('company')->gtag ?? "" }}"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', '{{ session('company')->gtag }}');
+            gtag('config', '{{ session('company')->gtag ?? "" }}');
         </script>
 
     </head>

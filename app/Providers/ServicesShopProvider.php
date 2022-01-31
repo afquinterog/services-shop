@@ -6,6 +6,7 @@ use App\Models\ProductRate;
 use App\Observers\ProductRateObserver;
 use App\Repositories\Contracts\CategoryRepository;
 use App\Repositories\Contracts\CompanyRepository;
+use App\Repositories\Contracts\MarketplaceRepository;
 use App\Repositories\Contracts\ProductCategoryRepository;
 use App\Repositories\Contracts\ProductImageRepository;
 use App\Repositories\Contracts\ProductOrderRepository;
@@ -13,6 +14,7 @@ use App\Repositories\Contracts\ProductRatingRepository;
 use App\Repositories\Contracts\ProductRepository;
 use App\Repositories\EloquentCategoryRepository;
 use App\Repositories\EloquentCompanyRepository;
+use App\Repositories\EloquentMarketplaceRepository;
 use App\Repositories\EloquentProductCategoryRepository;
 use App\Repositories\EloquentProductImageRepository;
 use App\Repositories\EloquentProductOrderRepository;
@@ -34,7 +36,8 @@ class ServicesShopProvider extends ServiceProvider
         ProductRatingRepository::class => EloquentProductRatingRepository::class,
         ProductCategoryRepository::class => EloquentProductCategoryRepository::class,
         ProductImageRepository::class => EloquentProductImageRepository::class,
-        ProductOrderRepository::class => EloquentProductOrderRepository::class
+        ProductOrderRepository::class => EloquentProductOrderRepository::class,
+        MarketplaceRepository::class => EloquentMarketplaceRepository::class,
     ];
 
     /**
