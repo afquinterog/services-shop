@@ -2,9 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Category;
-use App\Models\Company;
-use App\Models\Product;
+
 use App\Repositories\Contracts\MarketplaceRepository;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -21,20 +19,30 @@ class MarketplaceList extends Component
 
     public $vendors = [];
 
-    public $order='products.name';
+    public $order = 'products.name';
 
     public $actualCategory;
 
     public $actualVendor;
 
-    public function mount()
+    public function mount(MarketplaceRepository $marketplaceRepository)
     {
         //repos
-        $this->categories = Category::all();
-        $this->vendors = Company::all();
+        $this->categories = $marketplaceRepository->categories();
+        $this->vendors = $marketplaceRepository->vendors();
     }
 
     public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingActualCategory()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingActualVendor()
     {
         $this->resetPage();
     }
