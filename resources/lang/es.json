@@ -1,0 +1,62 @@
+{
+    "Admin": "Administración",
+    "Logout": "Cerrar sesión",
+
+    "Categories": "Categorías",
+    "Configuration": "Configuración",
+    "Products": "Productos",
+
+    "New Order on your shop": "Nuevo pedido en tu tienda",
+    "Products Management":"Gestión de Productos",
+    "New Product" : "Nuevo producto",
+    "Name":  "Nombre",
+    "Description":  "Descripción",
+    "Price": "Precio",
+    "Category": "Categoría",
+    "Slut": "Slug",
+    "Edit": "Editar",
+    "Edit Product": "Editar Producto",
+    "Product Information": "Información del Producto",
+    "Please write a product description": "Escribe una descripción del producto.",
+    "Publish": "Publicar",
+    "Yes": "Si",
+    "No": "No",
+    "Order": "Orden",
+    "Order should be a number and indicate the product position in the category": "Orden debe ser un número el cual indica la posición del producto en la categoría",
+    "Cancel": "Cancelar",
+    "Save": "Guardar",
+    "Product Images": "Imágenes del producto",
+    "Add images to your product, first one will be used as the main product image.": "Agregue imagenes para su producto, la primera imagen será usada como portada del producto.",
+    "Choose a product image": "Seleccione imagen del producto",
+    "Upload Image": "Guardar Imagen",
+
+    "Categories Management": "Gestión de categorías",
+    "New Category": "Nueva Categoría",
+    "Code": "Código",
+    "Edit Category": "Editar categoría",
+    "Category Information": "Información de la categoría",
+    "Please write a category description": "Escriba la descripción de la categoría",
+    "Order should be a number and indicate the category position in the page": "Orden de la categoría en la página de inicio",
+
+    "Configuration Management": "Configuración de la tienda",
+    "Shop Configuration": "Configuración de la tienda",
+    "Information to configure your shop": "Información para configurar tu tienda",
+    "Theme": "Tema,",
+    "Buy": "Comprar",
+    "Similar options": "Opciones similares",
+    "Please complete the following information": "Por favor ingresa la siguiente información para completar el pedido",
+    "Press / for search": "Presiona / para buscar ...",
+    "Image Slide": "Imagenes",
+
+
+    "Phone": "Teléfono",
+    "Quantity": "Cantidad",
+    "Send": "Enviar",
+
+    "Sending the message ...": "Enviando el mensaje ...",
+    "Rate received, thanks for help us to improve.": "Calificación recibida, gracias por ayudarnos a mejorar",
+    "Order received, our team will reach to you soon.": "Hemos recibido tu pedido, nuestro equipo de servicio al cliente te contactará pronto.",
+
+    "Product Stored": "Producto guardado",
+    "Product information stored properly": "Los datos del producto se guardaron correctamente"
+}
