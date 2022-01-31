@@ -73,9 +73,13 @@ class CompanySeed extends Command
         Auth::logout();
     }
 
-    public function deleteCompany($company)
+    public function deleteCompany($companyId)
     {
-        $company = Company::find($company);
+        $company = Company::find($companyId);
+
+        $company->products()->each( function ($product) {
+            $product->ratings->each->delete();
+        });
 
         $company->categories()->get()->each( function ($category) {
             DB::table('category_product')->where('category_id', $category->id)->delete();
@@ -83,6 +87,7 @@ class CompanySeed extends Command
 
         $company->categories()->delete();
         $company->products()->delete();
+        $company->user()->delete();
         $company->delete();
     }
 }
