@@ -45,7 +45,7 @@
 
     <div class="produc-list text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-12  pb-16">
         @foreach ($products as $product)
-            <x-product-preview :product="$product" ></x-product-preview>
+            <x-marketplace-product-preview :product="$product" ></x-marketplace-product-preview>
         @endforeach
     </div>
 

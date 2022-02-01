@@ -102,7 +102,7 @@
                                                                 {{ __('Company Logo') }}
                                                             </label>
                                                             <div class="w-28 h-28">
-                                                                <img class="object-fill" src="{{ session('company')->actual_logo }}" />
+                                                                <img class="object-fill" src="{{ session('company')->actual_logo ?? "" }}" />
                                                             </div>
                                                             <div class="mt-1 sm:mt-0 sm:col-span-2">
                                                                 <input type="file" wire:model="companyLogoImage">
