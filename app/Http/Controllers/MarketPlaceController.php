@@ -26,7 +26,7 @@ class MarketPlaceController extends Controller
 
         $pageTitle = "Marketplace " . $product->name;
 
-        return view('product-detail', compact('product', 'pageTitle'));
+        return view('marketplace-product-detail', compact('product', 'pageTitle'));
     }
 
 
