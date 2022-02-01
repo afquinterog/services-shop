@@ -44,3 +44,14 @@ in your local environment, use the connection data you provided below.
 `sail artisan make:seeder CompanySeeder`
 
 You can run this seeder many times as you want, each time will create a new company.
+
+
+### Access the application
+
+Application can be accesed by default here:
+
+`http://localhost:8080`
+
+Admin access is here, default password is "password":
+
+`http://localhost:8080/login`
