@@ -5,7 +5,7 @@
         @foreach ($product->similarProducts() as $product)
             <div class="product mt-8">
                 <div class="relative inline-block">
-                    <a href="/products/{{$product->slug}}">
+                    <a href="/my-products/{{$product->slug}}">
                         <img src="{{ $product->getFirstImage() }}" alt="{{ $product->name }}"
                              class="hover:opacity-75 transition ease-in-out duration-150 cursor-pointer">
                     </a>
@@ -16,7 +16,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="/products/{{$product->slug}}"
+                <a href="/my-products/{{$product->slug}}"
                    class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">{{ $product->name }}</a>
                 <div class="text-gray-400 mt-1">{{ $product->categories_description }}</div>
             </div>
