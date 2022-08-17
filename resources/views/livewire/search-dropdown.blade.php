@@ -12,7 +12,7 @@
         @keydown.shift.tab="isVisible = false"
         @keydown.escape.window="isVisible = false"
         @keydown.window="
-            if (event.keyCode === 191) {
+            if (event.keyCode === 191) { // User press /
                 event.preventDefault();
                 $refs.search.focus();
             }
