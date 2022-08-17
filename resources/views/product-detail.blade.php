@@ -55,7 +55,7 @@
                                 </button>
                             </div>
 
-                            <div class="ml-4">
+                            {{-- <div class="ml-4">
                                 <button
                                     @click="openRateModal = true"
                                     class="flex {{ $styles->getButtonBackgroundColor() }} text-white font-semibold px-4 py-4 w-32
@@ -66,7 +66,7 @@
 
                                     <span class="ml-2">{{ __('Rate') }}</span>
                                 </button>
-                            </div>
+                            </div> --}}
                         </div>
 
                     </div>

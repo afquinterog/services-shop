@@ -4,7 +4,7 @@
     <div class="relative inline-block">
         <a href="/my-products/{{$product->slug}}">
             <img src="{{ $product->getFirstImage() }}"
-                 alt="desayuno tipo 1"
+                 alt="{{ $product->name }}"
                  class="hover:opacity-75 transition ease-in-out duration-150 h-64 w-64 object-cover">
         </a>
         <div class="absolute bottom-0 right-0 w-16 h-16 {{ $styles->getProductPriceCircleBackgroundColor() }}  rounded-full"
