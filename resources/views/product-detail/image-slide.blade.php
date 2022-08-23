@@ -1,4 +1,4 @@
-<div class="images-container border-b border-gray-800 pb-12 mt-8" x-data="{ isImageModalVisible: false, image: ''}">
+<div class="images-container border-b border-gray-300 pb-12 mt-8" x-data="{ isImageModalVisible: false, image: ''}">
     <h2 class="text-blue-500 uppercase tracking-wide font-semibold">{{ __('Image Slide') }}</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-8">
         @foreach ($product->slideImages()->get() as $image)

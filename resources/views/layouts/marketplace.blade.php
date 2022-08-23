@@ -67,7 +67,7 @@
     @yield('content')
 </main>
 
-<footer class="border-t border-gray-800">
+<footer class="border-t border-gray-300">
     <div class="container mx-auto px-4 py-6 flex flex-wrap flex-col md:flex-row">
 
         <div class="flex-1 text-center md:text-left">

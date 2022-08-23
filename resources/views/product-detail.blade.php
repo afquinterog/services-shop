@@ -12,7 +12,7 @@
         <div class="container mx-auto px-4">
             <div
                 x-data="{ openBuyModal: false, openRateModal:false}"
-                class="product-details border-b border-gray-800 pb-12 flex flex-col lg:flex-row">
+                class="product-details border-b border-gray-300 pb-12 flex flex-col lg:flex-row">
 
                 <div class="flex-none">
                     <img src="{{ $product->getFirstImage() }}"
