@@ -40,7 +40,7 @@
 
     </head>
     <body {{ $attributes->merge(['class' => '']) }} >
-        <header class="border-b border-gray-800">
+        <header class="border-b border-gray-300">
             <nav class="container mx-auto flex flex-col lg:flex-row items-center justify-between px-4 py-6">
                 <div class="flex flex-col lg:flex-row items-center">
                     <a href="/">
@@ -79,7 +79,7 @@
             @yield('content')
         </main>
 
-        <footer class="border-t border-gray-800">
+        <footer class="border-t border-gray-300">
             <div class="container mx-auto px-4 py-6 flex flex-wrap flex-col md:flex-row">
 
                 <div class="flex-1 text-center md:text-left">
